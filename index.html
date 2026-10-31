@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101728">
+  <meta name="description" content="Cipher Quest: Codebreakers — an offline-friendly, pixel-art cryptography adventure for grades 5–8.">
+  <title>Cipher Quest: Codebreakers</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+<div class="app-shell" id="app">
+  <header class="topbar">
+    <button class="brand" id="brandHome" title="Mission briefing" aria-label="Open mission briefing">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-copy"><strong>CIPHER QUEST</strong><small>CODEBREAKERS // CIPHER GUILD · V1.0</small></span>
+    </button>
+    <div class="top-center"><span class="live-dot"></span><span id="topStatus">ENCRYPTED CHANNEL ACTIVE</span></div>
+    <div class="top-actions">
+      <button class="icon-btn" id="btnGuide" title="Codebreaker's handbook" aria-label="Open handbook">?</button>
+      <button class="icon-btn" id="btnSound" title="Toggle sound" aria-label="Toggle sound">♪</button>
+      <button class="icon-btn" id="btnSettings" title="Settings" aria-label="Open settings">⚙</button>
+    </div>
+  </header>
+  <main class="main-grid">
+    <section class="game-card" aria-label="Exploration area">
+      <div class="game-card-header">
+        <div class="chapter-label"><span class="tiny-label">NOW EXPLORING</span><strong id="regionName">THE FORGOTTEN SIGNAL</strong></div>
+        <div class="chapter-meta" id="chapterMeta">CHAPTER 01 / 03</div>
+      </div>
+      <div class="viewport" id="viewport">
+        <canvas id="world" width="640" height="360" tabindex="0" aria-label="Pixel-art mission world. Move with arrow keys or WASD, press E to interact with a nearby station."></canvas>
+        <div class="screen-shade"></div>
+        <div class="screen-top-left"><span class="screen-corner">● FIELD LINK</span><span class="screen-coordinates" id="coordinates">SECTOR 01 · 000</span></div>
+        <div class="screen-top-right" id="screenWeather">SIGNAL // 87%</div>
+        <div class="interaction-tip" id="interactTip" hidden></div>
+        <div class="screen-objective"><span class="mini-yellow">▸ OBJECTIVE</span><span id="screenObjective">Locate the first encrypted transmission</span></div>
+      </div>
+      <div class="control-bar">
+        <span class="control-hint"><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd> MOVE <span class="control-sep">·</span> <kbd>E</kbd> INTERACT</span>
+        <div class="control-buttons">
+          <button class="bar-btn" id="btnJump">◎ TRACK SIGNAL</button>
+          <button class="bar-btn" id="btnMap">▦ WORLD MAP</button>
+          <button class="bar-btn" id="btnFullscreen">⛶</button>
+        </div>
+      </div>
+      <div class="bottom-story"><span class="story-symbol">✦</span><p id="storyTicker">Every secret has a pattern. Every pattern has a key.</p><span class="ticker-label">GUILD TRANSMISSION</span></div>
+    </section>
+    <aside class="sidebar" aria-label="Mission status">
+      <div class="panel agent-panel">
+        <div class="panel-head"><span>AGENT DOSSIER</span><span class="status-pill">● ACTIVE</span></div>
+        <div class="agent-row"><div class="agent-portrait" aria-hidden="true"><div class="portrait-face"><i></i><i></i></div></div><div class="agent-details"><span class="tiny-label">CALLSIGN</span><strong id="agentName">AGENT NOVA</strong><span id="agentRank">ROOKIE CODEBREAKER</span></div></div>
+        <div class="agent-stats"><div><b id="statSolved">00</b><span>DECODED</span></div><div><b id="statScore">0000</b><span>POINTS</span></div><div><b id="statBadges">00</b><span>BADGES</span></div></div>
+      </div>
+      <div class="panel mission-panel">
+        <div class="panel-head"><span>CURRENT ASSIGNMENT</span><span id="missionCount">01 / 30</span></div>
+        <div class="mission-id" id="missionId">MISSION 01 · INCOMING</div>
+        <h2 id="missionTitle">First Contact</h2>
+        <p id="missionSummary">A transmission is waiting in the forest.</p>
+        <div class="mission-type"><span>ENCRYPTION TRACE</span><b id="missionType">CAESAR SHIFT</b></div>
+        <button class="primary-btn" id="btnMission"><span>DECODE TRANSMISSION</span><span>↗</span></button>
+      </div>
+      <div class="panel progress-panel">
+        <div class="panel-head"><span>REGIONAL INTEL</span><span id="regionFraction">0/10</span></div>
+        <div class="progress-label"><strong id="progressRegion">The Forgotten Signal</strong><span id="progressPct">0%</span></div>
+        <div class="progress-track"><div id="progressFill"></div></div>
+        <div class="node-list" id="nodeList"></div>
+        <p class="progress-foot" id="regionMessage">Decrypt transmissions to unlock the route ahead.</p>
+      </div>
+      <div class="panel tools-panel">
+        <div class="panel-head"><span>FIELD EQUIPMENT</span><span>ISSUED BY THE GUILD</span></div>
+        <div class="tool-grid">
+          <button class="tool-card" id="btnToolkit"><span class="tool-emoji">◉</span><strong>CIPHER TOOLS</strong><small>Interactive decoders</small></button>
+          <button class="tool-card" id="btnJournal"><span class="tool-emoji">▤</span><strong>CASE JOURNAL</strong><small>Clues &amp; chapters</small></button>
+          <button class="tool-card" id="btnHandbook"><span class="tool-emoji">▧</span><strong>FIELD GUIDE</strong><small>Learn every cipher</small></button>
+          <button class="tool-card" id="btnRegions"><span class="tool-emoji">◇</span><strong>REGION MAP</strong><small>Travel the world</small></button>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <div class="mobile-pad" aria-label="Touch movement controls"><button id="moveLeft" aria-label="Move left">◀</button><button id="moveAction" aria-label="Interact">E · INTERACT</button><button id="moveRight" aria-label="Move right">▶</button></div>
+  <footer class="footer"><span>CIPHER GUILD // SECURE LEARNING NETWORK</span><span>V1.0 · 30 MISSIONS · 3 REGIONS · OFFLINE PLAY · LOCAL SAVE</span></footer>
+</div>
+<div id="modalRoot" aria-live="polite"></div>
+<div id="toast" class="toast" role="status"></div>
+</body>
+</html>
