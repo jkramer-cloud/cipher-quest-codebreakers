@@ -15,7 +15,7 @@
   <header class="topbar">
     <button class="brand" id="brandHome" title="Mission briefing" aria-label="Open mission briefing">
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="brand-copy"><strong>CIPHER QUEST</strong><small>CODEBREAKERS // CIPHER GUILD · V1.0</small></span>
+      <span class="brand-copy"><strong>CIPHER QUEST</strong><small>CODEBREAKERS // CIPHER GUILD · V2.0</small></span>
     </button>
     <div class="top-center"><span class="live-dot"></span><span id="topStatus">ENCRYPTED CHANNEL ACTIVE</span></div>
     <div class="top-actions">
@@ -28,18 +28,18 @@
     <section class="game-card" aria-label="Exploration area">
       <div class="game-card-header">
         <div class="chapter-label"><span class="tiny-label">NOW EXPLORING</span><strong id="regionName">THE FORGOTTEN SIGNAL</strong></div>
-        <div class="chapter-meta" id="chapterMeta">CHAPTER 01 / 03</div>
+        <div class="chapter-meta" id="chapterMeta">SURFACE 0 · DECK 1/3</div>
       </div>
       <div class="viewport" id="viewport">
         <canvas id="world" width="640" height="360" tabindex="0" aria-label="Pixel-art mission world. Move with arrow keys or WASD, press E to interact with a nearby station."></canvas>
         <div class="screen-shade"></div>
-        <div class="screen-top-left"><span class="screen-corner">● FIELD LINK</span><span class="screen-coordinates" id="coordinates">SECTOR 01 · 000</span></div>
-        <div class="screen-top-right" id="screenWeather">SIGNAL // 87%</div>
+        <div class="screen-top-left"><span class="screen-corner">● FIELD LINK</span><span class="screen-coordinates" id="coordinates">SECTOR 01 · DECK 1 · X 160</span></div>
+        <div class="screen-top-right" id="screenWeather">JUNCTION // 0</div><div class="world-floor" id="floorIndicator">DECK 1 / 3</div><div class="world-route" id="exitPrompt">↑ TOWER · ↓ LABYRINTH</div>
         <div class="interaction-tip" id="interactTip" hidden></div>
         <div class="screen-objective"><span class="mini-yellow">▸ OBJECTIVE</span><span id="screenObjective">Locate the first encrypted transmission</span></div>
       </div>
       <div class="control-bar">
-        <span class="control-hint"><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd> MOVE <span class="control-sep">·</span> <kbd>E</kbd> INTERACT</span>
+        <span class="control-hint"><kbd>A</kbd><kbd>D</kbd> WALK <span class="control-sep">·</span> <kbd>W</kbd><kbd>S</kbd> STAIRS / PASSAGE <span class="control-sep">·</span> <kbd>E</kbd> INTERACT</span>
         <div class="control-buttons">
           <button class="bar-btn" id="btnJump">◎ TRACK SIGNAL</button>
           <button class="bar-btn" id="btnMap">▦ WORLD MAP</button>
@@ -55,7 +55,7 @@
         <div class="agent-stats"><div><b id="statSolved">00</b><span>DECODED</span></div><div><b id="statScore">0000</b><span>POINTS</span></div><div><b id="statBadges">00</b><span>BADGES</span></div></div>
       </div>
       <div class="panel mission-panel">
-        <div class="panel-head"><span>CURRENT ASSIGNMENT</span><span id="missionCount">01 / 30</span></div>
+        <div class="panel-head"><span>CURRENT ASSIGNMENT</span><span id="missionCount">00 / 90</span></div>
         <div class="mission-id" id="missionId">MISSION 01 · INCOMING</div>
         <h2 id="missionTitle">First Contact</h2>
         <p id="missionSummary">A transmission is waiting in the forest.</p>
@@ -80,8 +80,8 @@
       </div>
     </aside>
   </main>
-  <div class="mobile-pad" aria-label="Touch movement controls"><button id="moveLeft" aria-label="Move left">◀</button><button id="moveAction" aria-label="Interact">E · INTERACT</button><button id="moveRight" aria-label="Move right">▶</button></div>
-  <footer class="footer"><span>CIPHER GUILD // SECURE LEARNING NETWORK</span><span>V1.0 · 30 MISSIONS · 3 REGIONS · OFFLINE PLAY · LOCAL SAVE</span></footer>
+  <div class="mobile-pad" aria-label="Touch movement controls"><button id="moveLeft" aria-label="Move left">◀</button><button id="moveUp" aria-label="Ascend or climb up">▲ UP</button><button id="moveDown" aria-label="Descend or climb down">▼ DOWN</button><button id="moveAction" aria-label="Interact">E · INTERACT</button><button id="moveRight" aria-label="Move right">▶</button></div>
+  <footer class="footer"><span>CIPHER GUILD // SECURE LEARNING NETWORK</span><span>V2.0 · 90 MISSIONS · 9 REGIONS · 27 DECKS · OFFLINE PLAY · LOCAL SAVE</span></footer>
 </div>
 <div id="modalRoot" aria-live="polite"></div>
 <div id="toast" class="toast" role="status"></div>

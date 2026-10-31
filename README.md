@@ -1,58 +1,60 @@
-# Cipher Quest: Codebreakers — v1.0
+# Cipher Quest: Codebreakers — v2.0: Tower & Labyrinth
 
-A complete, original, 16-bit-inspired cryptography adventure for classroom use in grades 5–8. Explore three regions, decode thirty handcrafted transmissions, and unravel the mystery of the Cipher Guild and ECHO.
+A browser-based pixel adventure and cryptography game for grades 5–8, featuring **nine regions, 90 handcrafted missions, and 27 playable decks**. The introductory forest is a crossroads: ascend the radio tower or descend into a five-region labyrinth. No accounts, external dependencies, or internet connection required after loading the game.
 
-**Suggested GitHub description:** *Explore a pixel-art cryptography adventure! Crack 30 encrypted transmissions across 3 mysterious regions using Caesar shifts, Pigpen, Morse code, binary, and more. Designed for grades 5–8, with interactive tools, a story campaign, and automatic local saving.*
+## New in v2.0
 
-## Play and publish
+- 6 newly built regions and 60 new cipher missions (90 total)
+- 2 independent paths: Sky Tower (3 new upper regions), Labyrinth (3 new deep regions beyond the two original underground regions)
+- Each region features 3 traversable decks, an in-world staircase, and an up/down passage to a connected region
+- Animated vertical screen transitions for changing floors or regions
+- New hexadecimal ASCII and Vigenère keyword ciphers with functional toolkit decoders and handbook descriptions
+- Vertical branching world map, new location-specific pixel-art environments, achievements, and 90-mission completion ending
+- Version 1.0 saves preserved using the same `localStorage` key; previous completed missions remain completed
+- Touch-friendly UP and DOWN controls alongside left/right and interact
 
-1. Download and unzip `cipher-quest-codebreakers.zip`.
-2. Open `index.html` to play locally, even without internet access.
-3. To put the app on GitHub Pages, create a repository (for example `cipher-quest-codebreakers`) and upload all four files (`index.html`, `styles.css`, `game.js`, `favicon.svg`) at its root. Keep their names unchanged.
-4. In GitHub, select **Settings → Pages → Deploy from a branch → main → /(root) → Save**. GitHub's publishing process may take several moments.
-5. Add the published link to your Learning Hub when you're ready.
+## Controls
 
-No npm, build tools, API keys, external art assets, libraries, network access, or school accounts are required.
+- **A / D or Left / Right**: Walk on the current deck
+- **W / S or Up / Down**, by the **RIGHT stairwell**: Climb to the next deck (three decks per region)
+- **W / S or Up / Down**, by the **LEFT passage** on **Deck 1**: Ascend/descend to neighboring regions, if unlocked
+- **E**: Interact with a nearby cipher station; you may also click the station
+- **Track Signal**: Optional accessibility shortcut to locate the next active puzzle and its deck
+- **World Map**: Inspect and travel to previously unlocked regions
+- **On mobile**: use LEFT / UP / DOWN / INTERACT / RIGHT touch buttons
 
-## Gameplay
+The first 10 missions in The Forgotten Signal unlock both exploration paths. Each branch opens sequentially as the preceding region is cleared. Students may switch between branches at any time using the World Map or the physical passageways.
 
-- **Move:** left/right arrow keys or A/D; up/down arrow keys or W/S move along the floor. On touchscreens, use the movement buttons.
-- **Interact:** E while close to a station, or click a station on the canvas. Touchscreens can use the `E · INTERACT` button.
-- **Navigate:** `TRACK SIGNAL` helps locate the next active station. `WORLD MAP` allows revisiting unlocked regions.
-- **Decode:** read the intercepted transmission, open the Cipher Toolkit or Handbook as needed, and type the recovered plain-text message. Spaces and punctuation are optional in answers.
-- **Hints:** up to three per mission; each revealed hint reduces that mission's reward by 15 points, but never prevents advancement.
-- **Save:** progress, hints, badges, points, callsign, and settings are saved automatically on the device using browser localStorage. Different browsers/devices do not share saves.
-- **Replay:** completed stations may be revisited without gaining extra points.
+## Regions and missions
 
-## Regions
+| Region | Height/depth | Missions | Focus |
+|---|---:|---:|---|
+| The Forgotten Signal | Surface | 1–10 | Introductory ciphers |
+| Symbol Canyon | Depth −1 | 11–20 | Pigpen, mirror alphabets |
+| Clockwork Archives | Depth −2 | 21–30 | Morse, binary, rail fence, layered ciphers |
+| The Echo Labyrinth | Depth −3 | 31–40 | Reflected messages, hex, keyword ciphers |
+| Crystal Catacombs | Depth −4 | 41–50 | Hex, Vigenère, logic, mixed ciphers |
+| The Cipher Core | Depth −5 | 51–60 | Digital representation, layered decoding |
+| The Relay Tower | Height +1 | 61–70 | Signal repair and tower puzzles |
+| Storm Observatory | Height +2 | 71–80 | Storm broadcasts, coding, signal tracing |
+| The Signal Spire | Height +3 | 81–90 | Advanced codebreaking and final beacon |
 
-| Region | Missions | Methods introduced |
-|---|---:|---|
-| The Forgotten Signal | 1–10 | Caesar shifts, Atbash, A1Z26, reversed text |
-| Symbol Canyon | 11–20 | Pigpen symbols and mixed review of earlier ciphers |
-| The Clockwork Archives | 21–30 | Morse, 8-bit ASCII binary, two-rail fence, layered encryption |
+**Note:** Hexadecimal ASCII is an encoding, not secure encryption. Classical ciphers are educational examples, not secure modern encryption.
 
-## Educational goals
+## Installation on GitHub Pages
 
-Students will identify patterns, distinguish encoding techniques, use references strategically, practice logical reasoning, and see how a message can be represented as text, symbols, numbers, or binary. The handbook offers just-in-time explanations; answers are designed to be solvable with the integrated tools rather than external websites. Binary puzzles teach **ASCII representation**, not modern secure encryption; classical ciphers are for learning rather than real-world data protection.
+1. Extract the ZIP package.
+2. Upload the files from the `cipher-quest-codebreakers/` directory to the root of the existing `cipher-quest-codebreakers` GitHub repository.
+3. Replace older versions of `index.html`, `game.js`, `styles.css`, and `favicon.svg` with the versions here. No other repository needs to change.
+4. If not already enabled, use GitHub **Settings → Pages → Deploy from branch → main / (root)**.
+5. The existing Learning Hub game link should continue working because the game's repository URL is unchanged.
 
-## Classroom privacy and accessibility
+## Browser save and privacy
 
-- No analytics or remote services. No personally identifiable information required.
-- The callsign is an optional nickname. Encourage students **not to enter their full names**.
-- Keyboard, mouse, and touchscreen movement; clear text cues accompany color; sound optional.
-- Fullscreen projector mode is available from the game toolbar where supported.
-- Reduced-motion OS settings disable most interface animations; in-world motion is modest.
-- Progress is local to this browser and may be removed by clearing browser data. Students who change devices will start fresh.
+Progress uses `localStorage` in the same browser. No names, student IDs, analytics, or server connections. An optional player callsign is just a nickname. Clears with browser data; it does not synchronize across devices. Save data from v1 is automatically retained and expanded.
 
-## Teacher tips
+## Developer test hook
 
-Use missions 1–10 for introductory letter substitution; 11–20 for visual/spatial symbols; and 21–30 as an introduction to information representation. Students can work independently or solve transmissions together on a projector. Ask learners to explain *why* a decoding method worked, not just report the final message.
+Run `CipherQuestTests.validateMissions()` in the browser console to validate all 90 encryption/decryption pairs. It should return an empty list. `CipherQuestTests.missions` exposes the authored mission data for review.
 
-## Technical details
-
-This static site uses Canvas 2D for procedural pixel scenes, vanilla HTML/CSS/JavaScript for the controls, and browser localStorage for progress. All 30 missions and their solutions are authored in `game.js` and automatically checked against the corresponding encoding/decoding functions when the app loads. Developers may inspect `window.CipherQuestTests.validateMissions()` in the console for validation.
-
-## Credits
-
-Original classroom game concept and implementation generated for the Learning Hub. Fonts use system monospace families; the illustrations are drawn programmatically at runtime. No external copyrighted game assets are embedded.
+**Suggested GitHub description:** *Explore 9 pixel-art regions, ascend a signal tower, descend into a cipher labyrinth, and crack 90 cryptography missions using interactive decoding tools. For grades 5–8.*
